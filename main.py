@@ -24,6 +24,7 @@ def main():
 
 	diff = 5
 	amou = 5
+	dd = 5
 	price_XLF = -1
 	first_XLF = 1
 	po_XLF = 0
@@ -62,7 +63,7 @@ def main():
 							max_buy = tmp
 							max_buy_a = item[1]
 				max_buy_a = min(max_buy_a, amou)
-				if max_buy - max_buy2 > 1:
+				if max_buy - max_buy2 > dd:
 					print(say_add(getid(), 'XLF', "BUY", max_buy2 + 1, max_buy_a), file=exchange)
 					print(say_add(getid(), 'XLF', "SELL", max_buy, max_buy_a), file=exchange)
 				
@@ -79,7 +80,7 @@ def main():
 							min_sell = tmp
 							min_sell_a = item[1]
 				min_sell_a = min(min_sell_a, amou)
-				if min_sell2 - min_sell > 1:
+				if min_sell2 - min_sell > dd:
 					print(say_add(getid(), 'XLF', "BUY", min_sell, max_buy_a), file=exchange)
 					print(say_add(getid(), 'XLF', "SELL", min_sell2 - 1, max_buy_a), file=exchange)
 
@@ -102,7 +103,7 @@ def main():
 							max_buy = tmp
 							max_buy_a = item[1]
 				max_buy_a = min(max_buy_a, amou)
-				if max_buy - max_buy2 > 1:
+				if max_buy - max_buy2 > dd:
 					print(say_add(getid(), 'WFC', "BUY", max_buy2 + 1, max_buy_a), file=exchange)
 					print(say_add(getid(), 'WFC', "SELL", max_buy, max_buy_a), file=exchange)
 				
@@ -119,7 +120,7 @@ def main():
 							min_sell = tmp
 							min_sell_a = item[1]
 				min_sell_a = min(min_sell_a, amou)
-				if min_sell2 - min_sell > 1:
+				if min_sell2 - min_sell > dd:
 					print(say_add(getid(), 'WFC', "BUY", min_sell, max_buy_a), file=exchange)
 					print(say_add(getid(), 'WFC', "SELL", min_sell2 - 1, max_buy_a), file=exchange)
 
@@ -142,7 +143,7 @@ def main():
 							max_buy = tmp
 							max_buy_a = item[1]
 				max_buy_a = min(max_buy_a, amou)
-				if max_buy - max_buy2 > 1:
+				if max_buy - max_buy2 > dd:
 					print(say_add(getid(), 'GS', "BUY", max_buy2 + 1, max_buy_a), file=exchange)
 					print(say_add(getid(), 'GS', "SELL", max_buy, max_buy_a), file=exchange)
 				
@@ -159,7 +160,7 @@ def main():
 							min_sell = tmp
 							min_sell_a = item[1]
 				min_sell_a = min(min_sell_a, amou)
-				if min_sell2 - min_sell > 1:
+				if min_sell2 - min_sell > dd:
 					print(say_add(getid(), 'GS', "BUY", min_sell, max_buy_a), file=exchange)
 					print(say_add(getid(), 'GS', "SELL", min_sell2 - 1, max_buy_a), file=exchange)
 
@@ -182,7 +183,7 @@ def main():
 							max_buy = tmp
 							max_buy_a = item[1]
 				max_buy_a = min(max_buy_a, amou)
-				if max_buy - max_buy2 > 1:
+				if max_buy - max_buy2 > dd:
 					print(say_add(getid(), 'MS', "BUY", max_buy2 + 1, max_buy_a), file=exchange)
 					print(say_add(getid(), 'MS', "SELL", max_buy, max_buy_a), file=exchange)
 				
@@ -199,7 +200,7 @@ def main():
 							min_sell = tmp
 							min_sell_a = item[1]
 				min_sell_a = min(min_sell_a, amou)
-				if min_sell2 - min_sell > 1:
+				if min_sell2 - min_sell > dd:
 					print(say_add(getid(), 'MS', "BUY", min_sell, max_buy_a), file=exchange)
 					print(say_add(getid(), 'MS', "SELL", min_sell2 - 1, max_buy_a), file=exchange)
 
