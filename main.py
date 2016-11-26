@@ -61,7 +61,7 @@ def main():
 					if (item[0] < min_sell):
 						min_sell = item[0]
 				
-				if min_sell - max_buy > 10:
+				if min_sell - max_buy > 10 and max_buy != 0 and min_sell != 1000000000:
 					if last_buy != max_buy + 1:
 						print('BUY')
 						last_buy = max_buy + 1
