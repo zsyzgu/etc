@@ -22,6 +22,7 @@ def main():
 	exchange = connect()
 	print(say_hello("ZSYZGU"), file=exchange)
 
+	diff = 10
 	price_XLF = -1
 	first_XLF = 1
 	po_XLF = 0
@@ -65,15 +66,15 @@ def main():
 					sell_num = max(0, 10 + po_XLF)
 				if first_XLF == 1:
 					first_XLF = 0
-					print(say_add(getid(), 'XLF', "SELL", price_XLF + 10, sell_num), file=exchange)
-					print(say_add(getid(), 'XLF', "BUY", price_XLF - 10, buy_num), file=exchange)
+					print(say_add(getid(), 'XLF', "SELL", price_XLF + diff, sell_num), file=exchange)
+					print(say_add(getid(), 'XLF', "BUY", price_XLF - diff, buy_num), file=exchange)
 			if data['type'] == 'fill' and data['symbol'] == 'XLF':
 				if data['dir'] == "BUY":
 					id = getid()
-					print(say_add(id, data['symbol'], "BUY", price_XLF - 10, data['size']), file=exchange)
+					print(say_add(id, data['symbol'], "BUY", price_XLF - diff, data['size']), file=exchange)
 				if data['dir'] == "SELL":
 					id = getid()
-					print(say_add(id, data['symbol'], "SELL", price_XLF + 10, data['size']), file=exchange)
+					print(say_add(id, data['symbol'], "SELL", price_XLF + diff, data['size']), file=exchange)
 
 			if data['type'] == 'hello':
 				sym = data['symbols']
@@ -99,15 +100,15 @@ def main():
 					sell_num = max(0, 10 + po_WFC)
 				if first_WFC == 1:
 					first_WFC = 0
-					print(say_add(getid(), 'WFC', "SELL", price_WFC + 10, sell_num), file=exchange)
-					print(say_add(getid(), 'WFC', "BUY", price_WFC - 10, buy_num), file=exchange)
+					print(say_add(getid(), 'WFC', "SELL", price_WFC + diff, sell_num), file=exchange)
+					print(say_add(getid(), 'WFC', "BUY", price_WFC - diff, buy_num), file=exchange)
 			if data['type'] == 'fill' and data['symbol'] == 'WFC':
 				if data['dir'] == "BUY":
 					id = getid()
-					print(say_add(id, data['symbol'], "BUY", price_WFC - 10, data['size']), file=exchange)
+					print(say_add(id, data['symbol'], "BUY", price_WFC - diff, data['size']), file=exchange)
 				if data['dir'] == "SELL":
 					id = getid()
-					print(say_add(id, data['symbol'], "SELL", price_WFC + 10, data['size']), file=exchange)
+					print(say_add(id, data['symbol'], "SELL", price_WFC + diff, data['size']), file=exchange)
 
 			if data['type'] == 'hello':
 				sym = data['symbols']
@@ -133,15 +134,15 @@ def main():
 					sell_num = max(0, 10 + po_MS)
 				if first_MS == 1:
 					first_MS = 0
-					print(say_add(getid(), 'MS', "SELL", price_MS + 10, sell_num), file=exchange)
-					print(say_add(getid(), 'MS', "BUY", price_MS - 10, buy_num), file=exchange)
+					print(say_add(getid(), 'MS', "SELL", price_MS + diff, sell_num), file=exchange)
+					print(say_add(getid(), 'MS', "BUY", price_MS - diff, buy_num), file=exchange)
 			if data['type'] == 'fill' and data['symbol'] == 'MS':
 				if data['dir'] == "BUY":
 					id = getid()
-					print(say_add(id, data['symbol'], "BUY", price_MS - 10, data['size']), file=exchange)
+					print(say_add(id, data['symbol'], "BUY", price_MS - diff, data['size']), file=exchange)
 				if data['dir'] == "SELL":
 					id = getid()
-					print(say_add(id, data['symbol'], "SELL", price_MS + 10, data['size']), file=exchange)
+					print(say_add(id, data['symbol'], "SELL", price_MS + diff, data['size']), file=exchange)
 
 			if data['type'] == 'hello':
 				sym = data['symbols']
@@ -167,15 +168,15 @@ def main():
 					sell_num = max(0, 10 + po_GS)
 				if first_GS == 1:
 					first_GS = 0
-					print(say_add(getid(), 'GS', "SELL", price_GS + 10, sell_num), file=exchange)
-					print(say_add(getid(), 'GS', "BUY", price_GS - 10, buy_num), file=exchange)
+					print(say_add(getid(), 'GS', "SELL", price_GS + diff, sell_num), file=exchange)
+					print(say_add(getid(), 'GS', "BUY", price_GS - diff, buy_num), file=exchange)
 			if data['type'] == 'fill' and data['symbol'] == 'GS':
 				if data['dir'] == "BUY":
 					id = getid()
-					print(say_add(id, data['symbol'], "BUY", price_GS - 10, data['size']), file=exchange)
+					print(say_add(id, data['symbol'], "BUY", price_GS - diff, data['size']), file=exchange)
 				if data['dir'] == "SELL":
 					id = getid()
-					print(say_add(id, data['symbol'], "SELL", price_GS + 10, data['size']), file=exchange)
+					print(say_add(id, data['symbol'], "SELL", price_GS + diff, data['size']), file=exchange)
 
 		except:
 			traceback.print_exc()
