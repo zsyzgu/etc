@@ -26,18 +26,7 @@ def main():
 
 	last_buy = 0
 	last_sell = 0
-	'''price_WFC = -1
-	first_WFC = 1
-	buy_WFC = 0
-	sell_WFC = 0
-	price_GS = -1
-	first_GS = 1
-	buy_GS = 0
-	sell_GS = 0
-	price_MS = -1
-	first_MS = 1
-	buy_MS = 0
-	sell_MS = 0'''
+	last_diff = 0
 
 	while True:
 		data = exchange.readline().strip()
@@ -62,14 +51,16 @@ def main():
 						min_sell = item[0]
 				
 				if min_sell - max_buy > 10 and max_buy != 0 and min_sell != 1000000000:
-					if last_buy != max_buy + 1:
-						print('BUY')
-						last_buy = max_buy + 1
-						print(say_add(getid(), 'XLF', "BUY", max_buy + 1, 1), file=exchange)
-					if last_sell != min_sell - 1:
-						print('SELL')
-						last_sell = min_sell - 1
-						print(say_add(getid(), 'XLF', "SELL", min_sell - 1, 1), file=exchange)
+					if last_diff != min_sell - max_buy:
+						last_diff = min_sell - max_buy
+						if last_buy != max_buy + 1:
+							print('BUY')
+							last_buy = max_buy + 1
+							print(say_add(getid(), 'XLF', "BUY", max_buy + 1, 1), file=exchange)
+						if last_sell != min_sell - 1:
+							print('SELL')
+							last_sell = min_sell - 1
+							print(say_add(getid(), 'XLF', "SELL", min_sell - 1, 1), file=exchange)
 
 		except:
 			traceback.print_exc()
