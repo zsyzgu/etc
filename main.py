@@ -53,12 +53,12 @@ def main():
 					min_sell = min(min_sell, item[0])
 				if price_XLF == -1:
 					price_XLF = (max_buy + min_sell) / 2
-					sell_num = 50
-					buy_num = 50
+					sell_num = 100
+					buy_num = 100
 					if po_XLF > 0:
-						buy_num = 50 - po_XLF
+						buy_num = 100 - po_XLF
 					else:
-						sell_num = 50 + po_XLF
+						sell_num = 100 + po_XLF
 					print(say_add(getid(), 'XLF', "SELL", price_XLF + 20, sell_num), file=exchange)
 					print(say_add(getid(), 'XLF', "BUY", price_XLF - 20, buy_num), file=exchange)
 			if data['type'] == 'fill' and data['symbol'] == 'XLF':
@@ -85,12 +85,12 @@ def main():
 					min_sell = min(min_sell, item[0])
 				if price_WFC == -1:
 					price_WFC = (max_buy + min_sell) / 2
-					sell_num = 50
-					buy_num = 50
+					sell_num = 100
+					buy_num = 100
 					if po_WFC > 0:
-						buy_num = 50 - po_WFC
+						buy_num = 100 - po_WFC
 					else:
-						sell_num = 50 + po_WFC
+						sell_num = 100 + po_WFC
 					print(say_add(getid(), 'WFC', "SELL", price_WFC + 20, sell_num), file=exchange)
 					print(say_add(getid(), 'WFC', "BUY", price_WFC - 20, buy_num), file=exchange)
 			if data['type'] == 'fill' and data['symbol'] == 'WFC':
@@ -117,12 +117,12 @@ def main():
 					min_sell = min(min_sell, item[0])
 				if price_GS == -1:
 					price_GS = (max_buy + min_sell) / 2
-					sell_num = 50
-					buy_num = 50
+					sell_num = 100
+					buy_num = 100
 					if po_GS > 0:
-						buy_num = 50 - po_GS
+						buy_num = 100 - po_GS
 					else:
-						sell_num = 50 + po_GS
+						sell_num = 100 + po_GS
 					print(say_add(getid(), 'GS', "SELL", price_GS + 20, sell_num), file=exchange)
 					print(say_add(getid(), 'GS', "BUY", price_GS - 20, buy_num), file=exchange)
 			if data['type'] == 'fill' and data['symbol'] == 'GS':
@@ -149,12 +149,12 @@ def main():
 					min_sell = min(min_sell, item[0])
 				if price_MS == -1:
 					price_MS = (max_buy + min_sell) / 2
-					sell_num = 50
-					buy_num = 50
+					sell_num = 100
+					buy_num = 100
 					if po_MS > 0:
-						buy_num = 50 - po_MS
+						buy_num = 100 - po_MS
 					else:
-						sell_num = 50 + po_MS
+						sell_num = 100 + po_MS
 					print(say_add(getid(), 'MS', "SELL", price_MS + 20, sell_num), file=exchange)
 					print(say_add(getid(), 'MS', "BUY", price_MS - 20, buy_num), file=exchange)
 			if data['type'] == 'fill' and data['symbol'] == 'MS':
