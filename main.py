@@ -27,16 +27,14 @@ def main():
 	dd = 5
 	price_XLF = -1
 	first_XLF = 1
-	po_XLF = 0
+	buy_XLF = 0
+	sell_XLF = 0
 	price_WFC = -1
 	first_WFC = 1
-	po_WFC = 0
 	price_GS = -1
 	first_GS = 1
-	po_GS = 0
 	price_MS = -1
 	first_MS = 1
-	po_MS = 0
 
 	while True:
 		data = exchange.readline().strip()
@@ -44,11 +42,6 @@ def main():
 		if not data.has_key('type'):
 			continue
 		try:
-			if data['type'] == 'hello':
-				sym = data['symbols']
-				for item in sym:
-					if item["symbol"] == "XLF":
-						po_XLF = int(item["position"])
 			if data['type'] == 'book' and data['symbol'] == 'XLF':
 				buy_mess = data['buy']
 				max_buy = 0
@@ -63,7 +56,8 @@ def main():
 							max_buy = tmp
 							max_buy_a = item[1]
 				max_buy_a = min(max_buy_a, amou)
-				if max_buy - max_buy2 > dd:
+				if max_buy - max_buy2 > dd and max_buy != buy_XLF:
+					buy_XLF = max_buy
 					print(say_add(getid(), 'XLF', "BUY", max_buy2 + 1, max_buy_a), file=exchange)
 					print(say_add(getid(), 'XLF', "SELL", max_buy, max_buy_a), file=exchange)
 				
@@ -80,7 +74,8 @@ def main():
 							min_sell = tmp
 							min_sell_a = item[1]
 				min_sell_a = min(min_sell_a, amou)
-				if min_sell2 - min_sell > dd:
+				if min_sell2 - min_sell > dd and min_sell != sell_XLF:
+					sell_XLF = min_sell
 					print(say_add(getid(), 'XLF', "BUY", min_sell, max_buy_a), file=exchange)
 					print(say_add(getid(), 'XLF', "SELL", min_sell2 - 1, max_buy_a), file=exchange)
 		except:
