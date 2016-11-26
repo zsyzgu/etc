@@ -64,39 +64,6 @@ def main():
 				if data['dir'] == "SELL":
 					id = getid()
 					print(say_add(id, data['symbol'], "SELL", price_XLF + 10, data['size']), file=exchange)
-
-			if data['type'] == 'hello':
-				sym = data['symbols']
-				for item in sym:
-					if item["symbol"] == "WFC":
-						po_WFC = int(item["position"])
-			if data['type'] == 'book' and data['symbol'] == 'WFC':
-				buy_mess = data['buy']
-				sell_mess = data['sell']
-				max_buy = 0
-				for item in buy_mess:
-					max_buy = max(max_buy, item[0])
-				min_sell = 1000000000
-				for item in sell_mess:
-					min_sell = min(min_sell, item[0])
-				if price_WFC == -1:
-					price_WFC = (max_buy + min_sell) / 2
-					sell_num = 50
-					buy_num = 50
-					if po_WFC > 0:
-						buy_num = 50 - po_WFC
-					else:
-						sell_num = 50 + po_WFC
-					print(say_add(getid(), 'WFC', "SELL", price_WFC + 10, sell_num), file=exchange)
-					print(say_add(getid(), 'WFC', "BUY", price_WFC - 10, buy_num), file=exchange)
-			if data['type'] == 'fill' and data['symbol'] == 'WFC':
-				if data['dir'] == "BUY":
-					id = getid()
-					print(say_add(id, data['symbol'], "BUY", price_WFC - 10, data['size']), file=exchange)
-				if data['dir'] == "SELL":
-					id = getid()
-					print(say_add(id, data['symbol'], "SELL", price_WFC + 10, data['size']), file=exchange)
-
 		except:
 			traceback.print_exc()
 
