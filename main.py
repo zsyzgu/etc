@@ -48,21 +48,21 @@ def main():
 					min_sell = min(min_sell, item[0])
 				if price == -1:
 					price = (max_buy + min_sell) / 2
-					sell_num = 100
-					buy_num = 100
-					if po > 0:
-						buy_num = 100 - po
-					else:
-						sell_num = 100 + po
-					print(say_add(getid(), 'XLF', "SELL", price + 10, sell_num), file=exchange)
-					print(say_add(getid(), 'XLF', "BUY", price - 10, buy_num), file=exchange)
-			if data['type'] == 'fill' and data['symbol'] == 'XLF':
-				if data['dir'] == "BUY":
-					id = getid()
-					print(say_add(id, data['symbol'], "BUY", price + 10, data['size']), file=exchange)
-				if data['dir'] == "SELL":
-					id = getid()
-					print(say_add(id, data['symbol'], "SELL", price - 10, data['size']), file=exchange)
+				sell_num = 100
+				buy_num = 100
+				if po > 0:
+					buy_num = 100 - po
+				else:
+					sell_num = 100 + po
+				print(say_add(getid(), 'XLF', "SELL", price + 10, sell_num), file=exchange)
+				print(say_add(getid(), 'XLF', "BUY", price - 10, buy_num), file=exchange)
+			#if data['type'] == 'fill' and data['symbol'] == 'XLF':
+			#	if data['dir'] == "BUY":
+			#		id = getid()
+			#		print(say_add(id, data['symbol'], "BUY", price + 10, data['size']), file=exchange)
+			#	if data['dir'] == "SELL":
+			#		id = getid()
+			#		print(say_add(id, data['symbol'], "SELL", price - 10, data['size']), file=exchange)
 		except:
 			traceback.print_exc()
 
