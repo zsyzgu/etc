@@ -57,7 +57,7 @@ def main():
 					if (item[0] > max_buy2):
 						max_buy2 = item[0]
 						if max_buy2 > max_buy:
-							tmp = max_buy2:
+							tmp = max_buy2
 							max_buy2 = max_buy
 							max_buy = tmp
 							max_buy_a = item[1]
@@ -67,22 +67,21 @@ def main():
 					print(say_add(getid(), 'XLF', "SELL", max_buy, max_buy_a), file=exchange)
 				
 				sell_mess = data['sell']
-				#min_sell = 1000000000
-				#for item in sell_mess:
-				#	min_sell = min(min_sell, item[0])
-				#if max_buy != 0 and min_sell != 1000000000:
-				#	price_XLF = (max_buy + min_sell) / 2
-				#if first_XLF == 1:
-				#	first_XLF = 0
-				#	print(say_add(getid(), 'XLF', "SELL", price_XLF + diff, amou), file=exchange)
-				#	print(say_add(getid(), 'XLF', "BUY", price_XLF - diff, amou), file=exchange)
-			#if data['type'] == 'fill' and data['symbol'] == 'XLF':
-			#	if data['dir'] == "BUY":
-			#		id = getid()
-			#		print(say_add(id, data['symbol'], "BUY", price_XLF - diff, data['size']), file=exchange)
-			#	if data['dir'] == "SELL":
-			#		id = getid()
-			#		print(say_add(id, data['symbol'], "SELL", price_XLF + diff, data['size']), file=exchange)
+				min_sell = 1000000000
+				min_sell_a = 0
+				min_sell2 = 1000000000
+				for item in sell_mess:
+					if (item[0] < min_sell2):
+						min_sell2 = item[0]
+						if min_sell2 < min_sell:
+							tmp = min_sell2
+							min_sell2 = min_sell
+							min_sell = tmp
+							min_sell_a = item[1]
+				min_sell_a = min(min_sell_a, amou)
+				if min_sell2 - min_sell > 1:
+					print(say_add(getid(), 'XLF', "BUY", min_sell, max_buy_a), file=exchange)
+					print(say_add(getid(), 'XLF', "SELL", min_sell2 - 1, max_buy_a), file=exchange)
 
 		except:
 			traceback.print_exc()
