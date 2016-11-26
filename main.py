@@ -22,9 +22,8 @@ def main():
 	exchange = connect()
 	print(say_hello("ZSYZGU"), file=exchange)
 
-	diff = 5
-	amou = 5
-	dd = 5
+	amou = 10
+	dd = 1
 	price_XLF = -1
 	first_XLF = 1
 	buy_XLF = 0
