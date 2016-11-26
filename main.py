@@ -51,16 +51,16 @@ def main():
 						min_sell = item[0]
 				
 				if min_sell - max_buy > 10 and max_buy != 0 and min_sell != 1000000000:
-					if last_diff != min_sell - max_buy:
-						last_diff = min_sell - max_buy
-						if last_buy != max_buy + 1:
-							print('BUY')
-							last_buy = max_buy + 1
-							print(say_add(getid(), 'XLF', "BUY", max_buy + 1, 1), file=exchange)
-						if last_sell != min_sell - 1:
-							print('SELL')
-							last_sell = min_sell - 1
-							print(say_add(getid(), 'XLF', "SELL", min_sell - 1, 1), file=exchange)
+					this_buy = max_buy + 1
+					if this_buy != last_buy and this_buy != last_buy + 1:
+						print('BUY')
+						last_buy = max_buy + 1
+						print(say_add(getid(), 'XLF', "BUY", this_buy, 1), file=exchange)
+					this_sell = min_sell - 1
+					if this_sell != last_sell and this_sell != last_sell - 1:
+						print('SELL')
+						last_sell = this_sell
+						print(say_add(getid(), 'XLF', "SELL", this_sell, 1), file=exchange)
 
 		except:
 			traceback.print_exc()
