@@ -48,6 +48,9 @@ def main():
 		if not data.has_key('type'):
 			continue
 		try:
+			if data['type'] == 'reject':
+				print(data['error'])
+
 			if data['type'] == 'book' and data['symbol'] == 'XLF':
 				buy_mess = data['buy']
 				max_buy = 0
