@@ -22,19 +22,20 @@ def main():
 	exchange = connect()
 	print(say_hello("ZSYZGU"), file=exchange)
 
-	diff = 10
+	diff = 5
+	amou = 5
 	price_XLF = -1
 	first_XLF = 1
 	po_XLF = 0
-	price_WFC = -1
-	first_WFC = 1
-	po_WFC = 0
-	price_GS = -1
-	first_GS = 1
-	po_GS = 0
-	price_MS = -1
-	first_MS = 1
-	po_MS = 0
+	#price_WFC = -1
+	#first_WFC = 1
+	#po_WFC = 0
+	#price_GS = -1
+	#first_GS = 1
+	#po_GS = 0
+	#price_MS = -1
+	#first_MS = 1
+	#po_MS = 0
 
 	while True:
 		data = exchange.readline().strip()
@@ -49,134 +50,39 @@ def main():
 						po_XLF = int(item["position"])
 			if data['type'] == 'book' and data['symbol'] == 'XLF':
 				buy_mess = data['buy']
-				sell_mess = data['sell']
 				max_buy = 0
+				max_buy_a = 0
+				max_buy2 = 0
 				for item in buy_mess:
-					max_buy = max(max_buy, item[0])
-				min_sell = 1000000000
-				for item in sell_mess:
-					min_sell = min(min_sell, item[0])
-				if max_buy != 0 and min_sell != 1000000000:
-					price_XLF = (max_buy + min_sell) / 2
-				sell_num = 10
-				buy_num = 10
-				if po_XLF > 0:
-					buy_num = max(0, 10 - po_XLF)
-				else:
-					sell_num = max(0, 10 + po_XLF)
-				if first_XLF == 1:
-					first_XLF = 0
-					print(say_add(getid(), 'XLF', "SELL", price_XLF + diff, sell_num), file=exchange)
-					print(say_add(getid(), 'XLF', "BUY", price_XLF - diff, buy_num), file=exchange)
-			if data['type'] == 'fill' and data['symbol'] == 'XLF':
-				if data['dir'] == "BUY":
-					id = getid()
-					print(say_add(id, data['symbol'], "BUY", price_XLF - diff, data['size']), file=exchange)
-				if data['dir'] == "SELL":
-					id = getid()
-					print(say_add(id, data['symbol'], "SELL", price_XLF + diff, data['size']), file=exchange)
-
-			if data['type'] == 'hello':
-				sym = data['symbols']
-				for item in sym:
-					if item["symbol"] == "WFC":
-						po_WFC = int(item["position"])
-			if data['type'] == 'book' and data['symbol'] == 'WFC':
-				buy_mess = data['buy']
+					if (item[0] > max_buy2):
+						max_buy2 = item[0]
+						if max_buy2 > max_buy:
+							tmp = max_buy2:
+							max_buy2 = max_buy
+							max_buy = tmp
+							max_buy_a = item[1]
+				max_buy_a = min(max_buy_a, amou)
+				if max_buy - max_buy2 > 1:
+					print(say_add(getid(), 'XLF', "BUY", max_buy2 + 1, max_buy_a), file=exchange)
+					print(say_add(getid(), 'XLF', "SELL", max_buy, max_buy_a), file=exchange)
+				
 				sell_mess = data['sell']
-				max_buy = 0
-				for item in buy_mess:
-					max_buy = max(max_buy, item[0])
-				min_sell = 1000000000
-				for item in sell_mess:
-					min_sell = min(min_sell, item[0])
-				if max_buy != 0 and min_sell != 1000000000:
-					price_WFC = (max_buy + min_sell) / 2
-				sell_num = 10
-				buy_num = 10
-				if po_WFC > 0:
-					buy_num = max(0, 10 - po_WFC)
-				else:
-					sell_num = max(0, 10 + po_WFC)
-				if first_WFC == 1:
-					first_WFC = 0
-					print(say_add(getid(), 'WFC', "SELL", price_WFC + diff, sell_num), file=exchange)
-					print(say_add(getid(), 'WFC', "BUY", price_WFC - diff, buy_num), file=exchange)
-			if data['type'] == 'fill' and data['symbol'] == 'WFC':
-				if data['dir'] == "BUY":
-					id = getid()
-					print(say_add(id, data['symbol'], "BUY", price_WFC - diff, data['size']), file=exchange)
-				if data['dir'] == "SELL":
-					id = getid()
-					print(say_add(id, data['symbol'], "SELL", price_WFC + diff, data['size']), file=exchange)
-
-			if data['type'] == 'hello':
-				sym = data['symbols']
-				for item in sym:
-					if item["symbol"] == "MS":
-						po_MS = int(item["position"])
-			if data['type'] == 'book' and data['symbol'] == 'MS':
-				buy_mess = data['buy']
-				sell_mess = data['sell']
-				max_buy = 0
-				for item in buy_mess:
-					max_buy = max(max_buy, item[0])
-				min_sell = 1000000000
-				for item in sell_mess:
-					min_sell = min(min_sell, item[0])
-				if max_buy != 0 and min_sell != 1000000000:
-					price_MS = (max_buy + min_sell) / 2
-				sell_num = 10
-				buy_num = 10
-				if po_MS > 0:
-					buy_num = max(0, 10 - po_MS)
-				else:
-					sell_num = max(0, 10 + po_MS)
-				if first_MS == 1:
-					first_MS = 0
-					print(say_add(getid(), 'MS', "SELL", price_MS + diff, sell_num), file=exchange)
-					print(say_add(getid(), 'MS', "BUY", price_MS - diff, buy_num), file=exchange)
-			if data['type'] == 'fill' and data['symbol'] == 'MS':
-				if data['dir'] == "BUY":
-					id = getid()
-					print(say_add(id, data['symbol'], "BUY", price_MS - diff, data['size']), file=exchange)
-				if data['dir'] == "SELL":
-					id = getid()
-					print(say_add(id, data['symbol'], "SELL", price_MS + diff, data['size']), file=exchange)
-
-			if data['type'] == 'hello':
-				sym = data['symbols']
-				for item in sym:
-					if item["symbol"] == "GS":
-						po_GS = int(item["position"])
-			if data['type'] == 'book' and data['symbol'] == 'GS':
-				buy_mess = data['buy']
-				sell_mess = data['sell']
-				max_buy = 0
-				for item in buy_mess:
-					max_buy = max(max_buy, item[0])
-				min_sell = 1000000000
-				for item in sell_mess:
-					min_sell = min(min_sell, item[0])
-				if max_buy != 0 and min_sell != 1000000000:
-					price_GS = (max_buy + min_sell) / 2
-				sell_num = 10
-				buy_num = 10
-				if po_GS > 0:
-					buy_num = max(0, 10 - po_GS)
-				else:
-					sell_num = max(0, 10 + po_GS)
-				if first_GS == 1:
-					first_GS = 0
-					print(say_add(getid(), 'GS', "SELL", price_GS + diff, sell_num), file=exchange)
-					print(say_add(getid(), 'GS', "BUY", price_GS - diff, buy_num), file=exchange)
-			if data['type'] == 'fill' and data['symbol'] == 'GS':
-				if data['dir'] == "BUY":
-					id = getid()
-					print(say_add(id, data['symbol'], "BUY", price_GS - diff, data['size']), file=exchange)
-				if data['dir'] == "SELL":
-					id = getid()
-					print(say_add(id, data['symbol'], "SELL", price_GS + diff, data['size']), file=exchange)
+				#min_sell = 1000000000
+				#for item in sell_mess:
+				#	min_sell = min(min_sell, item[0])
+				#if max_buy != 0 and min_sell != 1000000000:
+				#	price_XLF = (max_buy + min_sell) / 2
+				#if first_XLF == 1:
+				#	first_XLF = 0
+				#	print(say_add(getid(), 'XLF', "SELL", price_XLF + diff, amou), file=exchange)
+				#	print(say_add(getid(), 'XLF', "BUY", price_XLF - diff, amou), file=exchange)
+			#if data['type'] == 'fill' and data['symbol'] == 'XLF':
+			#	if data['dir'] == "BUY":
+			#		id = getid()
+			#		print(say_add(id, data['symbol'], "BUY", price_XLF - diff, data['size']), file=exchange)
+			#	if data['dir'] == "SELL":
+			#		id = getid()
+			#		print(say_add(id, data['symbol'], "SELL", price_XLF + diff, data['size']), file=exchange)
 
 		except:
 			traceback.print_exc()
