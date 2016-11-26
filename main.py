@@ -48,10 +48,10 @@ def main():
 			if data['type'] == 'fill' and data['symbol'] == 'XLF':
 				if data['dir'] == "BUY":
 					id = getid()
-					print(say_add(id, data['symbol'], "SELL", price + 10, data['size']), file=exchange)
+					print(say_add(id, data['symbol'], "BUY", price + 10, data['size']), file=exchange)
 				if data['dir'] == "SELL":
 					id = getid()
-					print(say_add(id, data['symbol'], "BUY", price - 10, data['size']), file=exchange)
+					print(say_add(id, data['symbol'], "SELL", price - 10, data['size']), file=exchange)
         except:
             traceback.print_exc()
 
