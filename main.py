@@ -15,14 +15,14 @@ def getid():
 
 def connect():
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	#s.connect(("test-exch-westernjindynasty", 25000))
-	s.connect(("production", 25000))
+	s.connect(("test-exch-westernjindynasty", 25000))
+	#s.connect(("production", 25000))
 	return s.makefile('w+', 1)
 
 def main():
 	exchange = connect()
-	#print(say_hello("ZSYZGU"), file=exchange)
-	print(say_hello("WESTERNJINDYNASTY"), file=exchange)
+	print(say_hello("ZSYZGU"), file=exchange)
+	#print(say_hello("WESTERNJINDYNASTY"), file=exchange)
 
 	last_buy = 0
 	last_sell = 0
