@@ -48,12 +48,12 @@ def main():
 					min_sell = min(min_sell, item[0])
 				if price == -1:
 					price = (max_buy + min_sell) / 2
-					sell_num = 100
-					buy_num = 100
+					sell_num = 50
+					buy_num = 50
 					if po > 0:
-						buy_num = 100 - po
+						buy_num = 50 - po
 					else:
-						sell_num = 100 + po
+						sell_num = 50 + po
 					print(say_add(getid(), 'XLF', "SELL", price + 10, sell_num), file=exchange)
 					print(say_add(getid(), 'XLF', "BUY", price - 10, buy_num), file=exchange)
 			if data['type'] == 'fill' and data['symbol'] == 'XLF':
