@@ -65,7 +65,7 @@ def main():
 							max_buy = tmp
 							max_buy_a = item[1]
 				max_buy_a = min(max_buy_a, amou)
-				if max_buy - max_buy2 > dd and max_buy != buy_XLF:
+				if max_buy2 != 0 and max_buy - max_buy2 > dd and max_buy != buy_XLF:
 					print(max_buy)
 					print(buy_XLF)
 					buy_XLF = max_buy
@@ -85,7 +85,7 @@ def main():
 							min_sell = tmp
 							min_sell_a = item[1]
 				min_sell_a = min(min_sell_a, amou)
-				if min_sell2 - min_sell > dd and min_sell != sell_XLF:
+				if min_sell2 != 1000000000 and min_sell2 - min_sell > dd and min_sell != sell_XLF:
 					print(min_sell)
 					print(sell_XLF)
 					sell_XLF = min_sell
@@ -109,7 +109,7 @@ def main():
 							max_buy = tmp
 							max_buy_a = item[1]
 				max_buy_a = min(max_buy_a, amou)
-				if max_buy - max_buy2 > dd and max_buy != buy_WFC:
+				if max_buy2 != 0 and max_buy - max_buy2 > dd and max_buy != buy_WFC:
 					print(max_buy)
 					print(buy_WFC)
 					buy_WFC = max_buy
@@ -129,7 +129,7 @@ def main():
 							min_sell = tmp
 							min_sell_a = item[1]
 				min_sell_a = min(min_sell_a, amou)
-				if min_sell2 - min_sell > dd and min_sell != sell_WFC:
+				if min_sell2 != 1000000000 and min_sell2 - min_sell > dd and min_sell != sell_WFC:
 					print(min_sell)
 					print(sell_WFC)
 					sell_WFC = min_sell
@@ -149,7 +149,7 @@ def main():
 							max_buy = tmp
 							max_buy_a = item[1]
 				max_buy_a = min(max_buy_a, amou)
-				if max_buy - max_buy2 > dd and max_buy != buy_GS:
+				if max_buy2 != 0 and max_buy - max_buy2 > dd and max_buy != buy_GS:
 					print(max_buy)
 					print(buy_GS)
 					buy_GS = max_buy
@@ -169,7 +169,7 @@ def main():
 							min_sell = tmp
 							min_sell_a = item[1]
 				min_sell_a = min(min_sell_a, amou)
-				if min_sell2 - min_sell > dd and min_sell != sell_GS:
+				if min_sell2 != 1000000000 and min_sell2 - min_sell > dd and min_sell != sell_GS:
 					print(min_sell)
 					print(sell_GS)
 					sell_GS = min_sell
@@ -189,7 +189,7 @@ def main():
 							max_buy = tmp
 							max_buy_a = item[1]
 				max_buy_a = min(max_buy_a, amou)
-				if max_buy - max_buy2 > dd and max_buy != buy_MS:
+				if max_buy2 != 0 and max_buy - max_buy2 > dd and max_buy != buy_MS:
 					print(max_buy)
 					print(buy_MS)
 					buy_MS = max_buy
@@ -209,7 +209,7 @@ def main():
 							min_sell = tmp
 							min_sell_a = item[1]
 				min_sell_a = min(min_sell_a, amou)
-				if min_sell2 - min_sell > dd and min_sell != sell_MS:
+				if min_sell2 != 1000000000 and min_sell2 - min_sell > dd and min_sell != sell_MS:
 					print(min_sell)
 					print(sell_MS)
 					sell_MS = min_sell
