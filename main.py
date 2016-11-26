@@ -15,14 +15,14 @@ def getid():
 
 def connect():
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	#s.connect(("test-exch-westernjindynasty", 25000))
-	s.connect(("production", 25000))
+	s.connect(("test-exch-westernjindynasty", 25000))
+	#s.connect(("production", 25000))
 	return s.makefile('w+', 1)
 
 def main():
 	exchange = connect()
-	#print(say_hello("ZSYZGU"), file=exchange)
-	print(say_hello("WESTERNJINDYNASTY"), file=exchange)
+	print(say_hello("ZSYZGU"), file=exchange)
+	#print(say_hello("WESTERNJINDYNASTY"), file=exchange)
 
 	last_buy = 0
 	last_sell = 0
@@ -50,7 +50,7 @@ def main():
 					if (item[0] < min_sell):
 						min_sell = item[0]
 				
-				if min_sell - max_buy > 10 and max_buy != 0 and min_sell != 1000000000:
+				if min_sell - max_buy > 20 and max_buy != 0 and min_sell != 1000000000:
 					this_buy = max_buy + 1
 					if this_buy != last_buy and this_buy != last_buy + 1:
 						print('BUY')
