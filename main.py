@@ -24,7 +24,7 @@ def main():
     print(say_hello("ZSYZGU"), file=exchange)
 
     price = -1
-	po = 0
+    po = 0
     has_stock = False
 
     while True:
@@ -33,11 +33,11 @@ def main():
         if not data.has_key('type'):
             continue
         try:
-			if data['type'] == 'hello':
-				sym = data['symbols']
-				for item in sym:
-					if item["symbol"] == "XLF":
-						po = int(item["position"])
+            if data['type'] == 'hello':
+                sym = data['symbols']
+                for item in sym:
+                    if item["symbol"] == "XLF":
+                    po = int(item["position"])
 			if data['type'] == 'book' and data['symbol'] == 'XLF':
 				buy_mess = data['buy']
 				sell_mess = data['sell']
