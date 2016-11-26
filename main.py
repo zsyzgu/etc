@@ -31,10 +31,16 @@ def main():
 	sell_XLF = 0
 	price_WFC = -1
 	first_WFC = 1
+	buy_WFC = 0
+	sell_WFC = 0
 	price_GS = -1
 	first_GS = 1
+	buy_GS = 0
+	sell_GS = 0
 	price_MS = -1
 	first_MS = 1
+	buy_MS = 0
+	sell_MS = 0
 
 	while True:
 		data = exchange.readline().strip()
