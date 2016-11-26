@@ -93,7 +93,7 @@ def main():
 					price_WFC = (max_buy + min_sell) / 2
 				sell_num = 10
 				buy_num = 10
-				if price_WFC == -1:
+				if po_WFC > 0:
 					buy_num = max(0, 10 - po_WFC)
 				else:
 					sell_num = max(0, 10 + po_WFC)
@@ -127,12 +127,12 @@ def main():
 					price_MS = (max_buy + min_sell) / 2
 				sell_num = 10
 				buy_num = 10
-				if first_MS == 1:
-					first_MS = 0
+				if po_MS > 0:
 					buy_num = max(0, 10 - po_MS)
 				else:
 					sell_num = max(0, 10 + po_MS)
-				if po_MS == 0:
+				if first_MS == 1:
+					first_MS = 0
 					print(say_add(getid(), 'MS', "SELL", price_MS + 10, sell_num), file=exchange)
 					print(say_add(getid(), 'MS', "BUY", price_MS - 10, buy_num), file=exchange)
 			if data['type'] == 'fill' and data['symbol'] == 'MS':
