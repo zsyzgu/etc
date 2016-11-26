@@ -34,6 +34,9 @@ def main():
 		if not data.has_key('type'):
 			continue
 		try:
+			print(say_add(getid(), 'BOND', "BUY", 999, 100), file=exchange)
+			print(say_add(getid(), 'BOND', "SELL", 1001, 100), file=exchange)
+
 			if data['type'] == 'reject':
 				print(data['error'])
 
