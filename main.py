@@ -24,6 +24,7 @@ def main():
     print(say_hello("ZSYZGU"), file=exchange)
 
     price = -1
+	po = 0
     has_stock = False
 
     while True:
@@ -32,6 +33,11 @@ def main():
         if not data.has_key('type'):
             continue
         try:
+			if data['type'] == 'hello':
+				sym = data['symbols']
+				for item in sym:
+					if item["symbol"] == "XLF":
+						po = int(item["position"])
 			if data['type'] == 'book' and data['symbol'] == 'XLF':
 				buy_mess = data['buy']
 				sell_mess = data['sell']
@@ -43,8 +49,14 @@ def main():
 					min_sell = min(min_sell, item[0])
 				if price == -1:
 					price = (max_buy + min_sell) / 2
-					print(say_add(getid(), 'XLF', "SELL", price + 10, 100), file=exchange)
-					print(say_add(getid(), 'XLF', "BUY", price - 10, 100), file=exchange)
+					sell_num = 100
+					buy_num = 100
+					if po > 0:
+						buy_num = 100 - po
+					else:
+						sell_num = 100 + po
+					print(say_add(getid(), 'XLF', "SELL", price + 10, sell_num), file=exchange)
+					print(say_add(getid(), 'XLF', "BUY", price - 10, buy_num), file=exchange)
 			if data['type'] == 'fill' and data['symbol'] == 'XLF':
 				if data['dir'] == "BUY":
 					id = getid()
