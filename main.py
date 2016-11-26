@@ -55,12 +55,12 @@ def main():
 					if this_buy != last_buy and this_buy != last_buy + 1:
 						print('BUY')
 						last_buy = max_buy + 1
-						print(say_add(getid(), 'XLF', "BUY", this_buy, 1), file=exchange)
+						print(say_add(getid(), 'XLF', "BUY", this_buy, 5), file=exchange)
 					this_sell = min_sell - 1
 					if this_sell != last_sell and this_sell != last_sell - 1:
 						print('SELL')
 						last_sell = this_sell
-						print(say_add(getid(), 'XLF', "SELL", this_sell, 1), file=exchange)
+						print(say_add(getid(), 'XLF', "SELL", this_sell, 5), file=exchange)
 
 		except:
 			traceback.print_exc()
