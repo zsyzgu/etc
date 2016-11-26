@@ -67,7 +67,7 @@ def main():
 					print(say_add(getid(), 'XLF', "BUY", max_buy2 + 1, max_buy_a), file=exchange)
 					print(say_add(getid(), 'XLF', "SELL", max_buy, max_buy_a), file=exchange)
 				
-				sell_mess = data['sell']
+				'''sell_mess = data['sell']
 				min_sell = 1000000000
 				min_sell_a = 0
 				min_sell2 = 1000000000
@@ -82,7 +82,7 @@ def main():
 				min_sell_a = min(min_sell_a, amou)
 				if min_sell2 - min_sell > dd:
 					print(say_add(getid(), 'XLF', "BUY", min_sell, max_buy_a), file=exchange)
-					print(say_add(getid(), 'XLF', "SELL", min_sell2 - 1, max_buy_a), file=exchange)
+					print(say_add(getid(), 'XLF', "SELL", min_sell2 - 1, max_buy_a), file=exchange)'''
 
 			if data['type'] == 'hello':
 				sym = data['symbols']
@@ -107,7 +107,7 @@ def main():
 					print(say_add(getid(), 'WFC', "BUY", max_buy2 + 1, max_buy_a), file=exchange)
 					print(say_add(getid(), 'WFC', "SELL", max_buy, max_buy_a), file=exchange)
 				
-				sell_mess = data['sell']
+				'''sell_mess = data['sell']
 				min_sell = 1000000000
 				min_sell_a = 0
 				min_sell2 = 1000000000
@@ -122,7 +122,7 @@ def main():
 				min_sell_a = min(min_sell_a, amou)
 				if min_sell2 - min_sell > dd:
 					print(say_add(getid(), 'WFC', "BUY", min_sell, max_buy_a), file=exchange)
-					print(say_add(getid(), 'WFC', "SELL", min_sell2 - 1, max_buy_a), file=exchange)
+					print(say_add(getid(), 'WFC', "SELL", min_sell2 - 1, max_buy_a), file=exchange)'''
 
 			if data['type'] == 'hello':
 				sym = data['symbols']
@@ -147,7 +147,7 @@ def main():
 					print(say_add(getid(), 'GS', "BUY", max_buy2 + 1, max_buy_a), file=exchange)
 					print(say_add(getid(), 'GS', "SELL", max_buy, max_buy_a), file=exchange)
 				
-				sell_mess = data['sell']
+				'''sell_mess = data['sell']
 				min_sell = 1000000000
 				min_sell_a = 0
 				min_sell2 = 1000000000
@@ -162,7 +162,7 @@ def main():
 				min_sell_a = min(min_sell_a, amou)
 				if min_sell2 - min_sell > dd:
 					print(say_add(getid(), 'GS', "BUY", min_sell, max_buy_a), file=exchange)
-					print(say_add(getid(), 'GS', "SELL", min_sell2 - 1, max_buy_a), file=exchange)
+					print(say_add(getid(), 'GS', "SELL", min_sell2 - 1, max_buy_a), file=exchange)'''
 
 			if data['type'] == 'hello':
 				sym = data['symbols']
@@ -187,7 +187,7 @@ def main():
 					print(say_add(getid(), 'MS', "BUY", max_buy2 + 1, max_buy_a), file=exchange)
 					print(say_add(getid(), 'MS', "SELL", max_buy, max_buy_a), file=exchange)
 				
-				sell_mess = data['sell']
+				'''sell_mess = data['sell']
 				min_sell = 1000000000
 				min_sell_a = 0
 				min_sell2 = 1000000000
@@ -202,7 +202,7 @@ def main():
 				min_sell_a = min(min_sell_a, amou)
 				if min_sell2 - min_sell > dd:
 					print(say_add(getid(), 'MS', "BUY", min_sell, max_buy_a), file=exchange)
-					print(say_add(getid(), 'MS', "SELL", min_sell2 - 1, max_buy_a), file=exchange)
+					print(say_add(getid(), 'MS', "SELL", min_sell2 - 1, max_buy_a), file=exchange)'''
 
 		except:
 			traceback.print_exc()
